@@ -1,0 +1,6 @@
+name_service,number_of_devices,minutes,sms,internet,tariff_fee,billing_period
+Для двоих,2,300,300,30,840,month
+Студенческий,1,300,150,20,400,month
+Корпоротивный,10,Infinity,500,Infinity,60000,year
+Деловой,1,600,300,Infinity,650,month
+Детский,1,200,100,0,300,month
