@@ -1,0 +1,7 @@
+type_of_client,name,surname,middle_name,email
+Компания,"""Деревянные ложки на заказ""",,,lololoshki@yandex.ru
+Компания,"""Балерина""",,,balerina@mail.com
+Компания,"ООО ""Ткани""",,,tkanini@ya.ru
+Физическое лицо,Анастасия,Баранова,Михайловна,baranova.a@ya.ru
+Физическое лицо,Иван,Иванов,Дмитриевич,vanya.van@yandex.ru
+Физическое лицо,Пётр,Антонов,Валентинович,pp.antoshka@gse.cs.msu.ru
