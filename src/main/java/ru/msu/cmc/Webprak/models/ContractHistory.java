@@ -14,11 +14,11 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Table(name = "contract_history", schema = "public", catalog = "postgres")
-public class ContractHistory {
+public class ContractHistory implements CommonEntity<Long>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contract_id")
-    private int contractId;
+    private Long id;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "mobile_account")
     @NonNull
@@ -36,70 +36,4 @@ public class ContractHistory {
     @NonNull
     @Column(name = "date_stop")
     private Date dateStop;
-
-//    public int getContractId() {
-//        return contractId;
-//    }
-//
-//    public void setContractId(int contractId) {
-//        this.contractId = contractId;
-//    }
-//
-//    public String getMobileAccount() {
-//        return mobileAccount;
-//    }
-//
-//    public void setMobileAccount(String mobileAccount) {
-//        this.mobileAccount = mobileAccount;
-//    }
-//
-//    public Integer getServiceId() {
-//        return serviceId;
-//    }
-//
-//    public void setServiceId(Integer serviceId) {
-//        this.serviceId = serviceId;
-//    }
-//
-//    public String getTelephoneNumbers() {
-//        return telephoneNumbers;
-//    }
-//
-//    public void setTelephoneNumbers(String telephoneNumbers) {
-//        this.telephoneNumbers = telephoneNumbers;
-//    }
-//
-//    public Date getDateStart() {
-//        return dateStart;
-//    }
-//
-//    public void setDateStart(Date dateStart) {
-//        this.dateStart = dateStart;
-//    }
-//
-//    public Date getDateStop() {
-//        return dateStop;
-//    }
-//
-//    public void setDateStop(Date dateStop) {
-//        this.dateStop = dateStop;
-//    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ContractHistory that = (ContractHistory) o;
-        return contractId == that.contractId
-                && Objects.equals(mobileAccount, that.mobileAccount)
-                && Objects.equals(serviceId, that.serviceId)
-                && Objects.equals(telephoneNumbers, that.telephoneNumbers)
-                && Objects.equals(dateStart, that.dateStart)
-                && Objects.equals(dateStop, that.dateStop);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(contractId, mobileAccount, serviceId, telephoneNumbers, dateStart, dateStop);
-    }
 }

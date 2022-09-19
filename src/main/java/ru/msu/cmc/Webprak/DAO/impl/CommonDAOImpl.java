@@ -1,4 +1,4 @@
-package ru.msu.cmc.Webprak.DAO.impl;
+package ru.msu.cmc.webprak.DAO.impl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -7,6 +7,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 import ru.msu.cmc.Webprak.DAO.CommonDAO;
 import ru.msu.cmc.Webprak.models.CommonEntity;
+
 
 import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;

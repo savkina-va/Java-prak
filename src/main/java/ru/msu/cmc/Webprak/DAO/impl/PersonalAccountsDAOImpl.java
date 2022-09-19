@@ -3,9 +3,13 @@ package ru.msu.cmc.Webprak.DAO.impl;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-import ru.msu.cmc.Webprak.DAO.PersonalAccauntsDAO;
-import ru.msu.cmc.Webprak.DAO.impl.CommonDAOImpl;
-import ru.msu.cmc.Webprak.models.PersonalAccaunts;
+
+import ru.msu.cmc.Webprak.DAO.PersonalAccountsDAO;
+import ru.msu.cmc.Webprak.DAO.ServiceDAO;
+
+import ru.msu.cmc.Webprak.models.MobileAccounts;
+import ru.msu.cmc.Webprak.models.PersonalAccounts;
+import ru.msu.cmc.Webprak.models.Service;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -15,15 +19,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class PersonalAccauntsDAOImpl extends CommonDAOImpl<Service, Long> implements ServiceDAO {
-
-    public PersonalAccauntDAOImpl(){
-        super(Service.class);
+public class PersonalAccountsDAOImpl extends ru.msu.cmc.webprak.DAO.impl.CommonDAOImpl<PersonalAccounts, Long> implements PersonalAccountsDAO {
+    public PersonalAccountsDAOImpl(){
+        super(PersonalAccounts.class);
     }
 
-    //@Override
 
-    private String likeExpr(String param) {
-        return "%" + param + "%";
+    @Override
+    public List<MobileAccounts> getMobileAccounts(Long clientId) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<MobileAccounts> query = session.createQuery("select * from mobile_accounts where mobile_accounts.client_id==:clientID", MobileAccounts.class)
+                    .setParameter("clientID", clientId);
+            return query.getResultList();
+        }
     }
 }
+
