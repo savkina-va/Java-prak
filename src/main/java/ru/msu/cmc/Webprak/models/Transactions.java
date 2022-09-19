@@ -22,13 +22,16 @@ public class Transactions implements CommonEntity<Long> {
     @NonNull
     @Column(name = "type_of_transaction")
     private String typeOfTransaction;
+
     @NonNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "mobile_account")
     private MobileAccounts mobileAccount;
+
     @NonNull
     @Column(name = "amount")
     private Long amount;
+
     @NonNull
     @Column(name = "date_of_transaction")
     private Date dateOfTransaction;
