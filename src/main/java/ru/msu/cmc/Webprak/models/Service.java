@@ -2,6 +2,8 @@ package ru.msu.cmc.Webprak.models;
 
 import javax.persistence.*;
 import lombok.*;
+
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -12,10 +14,10 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Table(name = "service", schema = "public", catalog = "postgres")
-public class Service {
+public class Service implements CommonEntity<Long> {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "service_id")
+    @NonNull
     private Long serviceId;
     @NonNull
     @Column(name = "name_service")
@@ -26,7 +28,7 @@ public class Service {
     private Long numberOfDevices;
     @NonNull
     @Column(name = "minutes")
-    private Double minutes;
+    private Long minutes;
     @NonNull
     @Column(name = "sms")
     private Long sms;
@@ -121,5 +123,15 @@ public class Service {
     @Override
     public int hashCode() {
         return Objects.hash(serviceId, nameService, numberOfDevices, minutes, sms, internet, unlimitedApps, tariffFee);
+    }
+
+    @Override
+    public Long getId() {
+        return null;
+    }
+
+    @Override
+    public void setId(Long aLong) {
+
     }
 }

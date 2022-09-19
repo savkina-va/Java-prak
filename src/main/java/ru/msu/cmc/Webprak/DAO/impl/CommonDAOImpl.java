@@ -12,6 +12,14 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.io.Serializable;
 import java.util.Collection;
 
+import org.hibernate.Filter;
+import org.hibernate.query.Query;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+
 @Repository
 public abstract class CommonDAOImpl<T extends CommonEntity<ID>, ID extends Serializable> implements CommonDAO<T, ID> {
 
@@ -94,4 +102,30 @@ public abstract class CommonDAOImpl<T extends CommonEntity<ID>, ID extends Seria
             session.getTransaction().commit();
         }
     }
+
+//    @Override
+//    public List<T> filter(Map<String, List> filters, Class persistentClass) {
+//
+//        try (Session session = sessionFactory.openSession()){
+//            filters.entrySet().forEach(entry -> {
+//                String filterName = entry.getKey();
+//                List parameters = entry.getValue();
+//                Filter enableFilter = session.enableFilter(filterName);
+//                Set<String> paramNames = enableFilter.getFilterDefinition().getParameterNames();
+//                AtomicInteger i = new AtomicInteger();
+//                paramNames.forEach(name ->
+//                        enableFilter.setParameter(name, parameters.get(i.getAndIncrement()))
+//                );
+//            });
+//
+//            Query query = session.createQuery("from " + persistentClass.getName());
+//
+//            @SuppressWarnings("unchecked")
+//            List<T> result = query.list();
+//            session.close();
+//            return result;
+//        } catch (Exception e) {
+//            return null;
+//        }
+//    }
 }

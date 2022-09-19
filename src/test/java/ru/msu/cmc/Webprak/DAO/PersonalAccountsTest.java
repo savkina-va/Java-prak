@@ -6,7 +6,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
-import ru.msu.cmc.Webprak.models.Service;
+import ru.msu.cmc.Webprak.models.PersonalAccounts;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -24,10 +24,10 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestPropertySource(locations="classpath:application.properties")
-public class ServiceDAOTest {
+public class PersonalAccountsTest {
 
     @Autowired
-    private ServiceDAO serviceDAO;
+    private PersonalAccountsDAO personalAccountsDAO;
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -39,14 +39,13 @@ public class ServiceDAOTest {
         //@SuppressWarnings("unchecked")
         //Long result = Long.valueOf((Integer) query.list().get(0));
         session.close();
-        Service entity = new Service(18L, "lalala", 1L, 3000L,
-                500L, 5.0, "fff", 422L);
-        serviceDAO.save(entity);
-        Service service = serviceDAO.getById(18L);
+        PersonalAccounts newPerson = new PersonalAccounts(18L,"Физическое лицо", "Максим", "Савкин", "Константинович", "krasavchik@mail.ru");
+        personalAccountsDAO.save(newPerson);
+        PersonalAccounts service = personalAccountsDAO.getById(18L);
         assertNull(service);
     }
 
-    @Test
+    /*@Test
     void updateTest() {
         Service entity = new Service(1L,"bebebe", 1L, 3000L,
                 700L, 5.0, 422L);
@@ -61,6 +60,12 @@ public class ServiceDAOTest {
         Service delService = serviceDAO.getById(18L);
         serviceDAO.delete(delService);
         assertNull(serviceDAO.getById(18L));
+    }*/
+    @Test
+    void deleteByIdTest() {
+        Session session = sessionFactory.openSession();
+        personalAccountsDAO.deleteById(18L);
+        assertNull(personalAccountsDAO.getById(18L));
     }
 
 

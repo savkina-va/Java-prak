@@ -13,20 +13,19 @@ import java.util.Objects;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Table(name = "contract_history", schema = "public", catalog = "postgres")
-public class ContractHistory {
+@Table(name = "contract_history")
+public class ContractHistory implements CommonEntity<Long> {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contract_id")
-    private int contractId;
-    @ManyToOne(fetch = FetchType.EAGER)
+    private Long contractId;
+    @JoinTable(name = "mobile_accounts")
     @JoinColumn(name = "mobile_account")
     @NonNull
-    private MobileAccounts mobileAccount;
-    @ManyToOne(fetch = FetchType.EAGER)
+    private Long mobileAccount;
+    @JoinTable(name = "service")
     @JoinColumn(name = "service_id")
     @NonNull
-    private Service serviceId;
+    private Long serviceId;
     @NonNull
     @Column(name = "telephone_numbers")
     private String telephoneNumbers;
@@ -37,53 +36,53 @@ public class ContractHistory {
     @Column(name = "date_stop")
     private Date dateStop;
 
-//    public int getContractId() {
-//        return contractId;
-//    }
-//
-//    public void setContractId(int contractId) {
-//        this.contractId = contractId;
-//    }
-//
-//    public String getMobileAccount() {
-//        return mobileAccount;
-//    }
-//
-//    public void setMobileAccount(String mobileAccount) {
-//        this.mobileAccount = mobileAccount;
-//    }
-//
-//    public Integer getServiceId() {
-//        return serviceId;
-//    }
-//
-//    public void setServiceId(Integer serviceId) {
-//        this.serviceId = serviceId;
-//    }
-//
-//    public String getTelephoneNumbers() {
-//        return telephoneNumbers;
-//    }
-//
-//    public void setTelephoneNumbers(String telephoneNumbers) {
-//        this.telephoneNumbers = telephoneNumbers;
-//    }
-//
-//    public Date getDateStart() {
-//        return dateStart;
-//    }
-//
-//    public void setDateStart(Date dateStart) {
-//        this.dateStart = dateStart;
-//    }
-//
-//    public Date getDateStop() {
-//        return dateStop;
-//    }
-//
-//    public void setDateStop(Date dateStop) {
-//        this.dateStop = dateStop;
-//    }
+    public Long getContractId() {
+        return contractId;
+    }
+
+    public void setContractId(Long contractId) {
+        this.contractId = contractId;
+    }
+
+    public Long getMobileAccount() {
+        return mobileAccount;
+    }
+
+    public void setMobileAccount(Long mobileAccount) {
+        this.mobileAccount = mobileAccount;
+    }
+
+    public Long getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(Long serviceId) {
+        this.serviceId = serviceId;
+    }
+
+    public String getTelephoneNumbers() {
+        return telephoneNumbers;
+    }
+
+    public void setTelephoneNumbers(String telephoneNumbers) {
+        this.telephoneNumbers = telephoneNumbers;
+    }
+
+    public Date getDateStart() {
+        return dateStart;
+    }
+
+    public void setDateStart(Date dateStart) {
+        this.dateStart = dateStart;
+    }
+
+    public Date getDateStop() {
+        return dateStop;
+    }
+
+    public void setDateStop(Date dateStop) {
+        this.dateStop = dateStop;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -101,5 +100,15 @@ public class ContractHistory {
     @Override
     public int hashCode() {
         return Objects.hash(contractId, mobileAccount, serviceId, telephoneNumbers, dateStart, dateStop);
+    }
+
+    @Override
+    public Long getId() {
+        return null;
+    }
+
+    @Override
+    public void setId(Long aLong) {
+
     }
 }

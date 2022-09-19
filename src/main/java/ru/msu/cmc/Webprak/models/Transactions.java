@@ -13,9 +13,8 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Table(name = "transactions", schema = "public", catalog = "postgres")
-public class Transactions {
+public class Transactions implements CommonEntity<Long> {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transaction_id")
     private Long transactionId;
 
@@ -88,5 +87,15 @@ public class Transactions {
     @Override
     public int hashCode() {
         return Objects.hash(transactionId, typeOfTransaction, mobileAccount, amount, dateOfTransaction);
+    }
+
+    @Override
+    public Long getId() {
+        return null;
+    }
+
+    @Override
+    public void setId(Long aLong) {
+
     }
 }

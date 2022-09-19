@@ -13,14 +13,14 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Table(name = "mobile_accounts", schema = "public", catalog = "postgres")
-public class MobileAccounts {
+public class MobileAccounts implements CommonEntity<Long> {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id")
     @NonNull
     private PersonalAccounts clientId;
     @Id
     @Column(name = "telephone_number")
-    private String telephoneNumber;
+    private Long telephoneNumber;
     @NonNull
     @Column(name = "balance")
     private Long balance;
@@ -62,5 +62,15 @@ public class MobileAccounts {
     @Override
     public int hashCode() {
         return Objects.hash(clientId, telephoneNumber, balance);
+    }
+
+    @Override
+    public Long getId() {
+        return null;
+    }
+
+    @Override
+    public void setId(Long aLong) {
+
     }
 }

@@ -13,9 +13,8 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Table(name = "personal_accounts", schema = "public", catalog = "postgres")
-public class PersonalAccounts {
+public class PersonalAccounts implements CommonEntity<Long> {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "client_id")
     private Long clientId;
     @NonNull
@@ -95,5 +94,15 @@ public class PersonalAccounts {
     @Override
     public int hashCode() {
         return Objects.hash(clientId, typeOfClint, name, surname, middleName, email);
+    }
+
+    @Override
+    public Long getId() {
+        return null;
+    }
+
+    @Override
+    public void setId(Long aLong) {
+
     }
 }
