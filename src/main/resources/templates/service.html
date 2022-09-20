@@ -21,6 +21,11 @@
   <div id="serviceInfo">
     <h4 th:text="${service.getNameService()}"></h4>
     <p th:if="${service.getNameService() != null}" th:text="'Название: ' + ${service.getNameService()}"></p>
+    <p th:if="${service.getNumberOfDevices() != null}" th:text="'Количество подключаемых устройств: ' + ${service.getNumberOfDevices()}"></p>
+    <p th:if="${service.getMinutes() != null}" th:text="'Минуты: ' + ${service.getMinutes()}"></p>
+    <p th:if="${service.getSms() != null}" th:text="'SMS: ' + ${service.getSms()}"></p>
+    <p th:if="${service.getInternet() != null}" th:text="'Интернет: ' + ${service.getInternet()} + ' Гб' "></p>
+    <p th:if="${service.getTariffFee() != null}" th:text="'Стоимость: ' + ${service.getTariffFee()} + ' рублей/месяц' "></p>
 
   </div>
 
