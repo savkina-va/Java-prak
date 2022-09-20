@@ -10,4 +10,6 @@ public interface ContractHistoryDAO extends CommonDAO<ContractHistory, Long> {
     List<ContractHistory> getServices(Long serviceId);
 
     List<ContractHistory> filterByDate(java.util.Date startDate, Date stopDate);
+
+    Boolean isCreditExceeded(Long contractId);
 }

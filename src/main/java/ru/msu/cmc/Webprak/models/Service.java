@@ -27,15 +27,23 @@ public class Service implements CommonEntity<Long>{
     @NonNull
     @Column(name = "minutes")
     private Double minutes;
+
     @NonNull
     @Column(name = "sms")
     private Long sms;
+
     @NonNull
     @Column(name = "internet")
     private Double internet;
+
     @Column(name = "unlimited_apps")
     private String unlimitedApps;
+
     @NonNull
     @Column(name = "tariff_fee")
     private Long tariffFee;
+
+    @NonNull
+    @Column(name = "max_credit")
+    private Long maxCredit;
 }
