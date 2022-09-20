@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS mobile_accounts CASCADE;
 CREATE TABLE mobile_accounts
 (
     client_id        integer REFERENCES personal_accounts,
-    telephone_number varchar(50) PRIMARY KEY,
+    telephone_number bigint PRIMARY KEY,
     balance          integer NOT NULL
 );
 
@@ -31,7 +31,7 @@ CREATE TABLE transactions
 (
     transaction_id      SERIAL PRIMARY KEY,
     type_of_transaction varchar(8) NOT NULL,
-    mobile_account      varchar(50)  REFERENCES mobile_accounts,
+    mobile_account      bigint  REFERENCES mobile_accounts,
     amount              integer     NOT NULL,
     date_of_transaction date        NOT NULL
 );
@@ -50,10 +50,11 @@ CREATE TABLE service
     sms               integer       NOT NULL,
     internet          real          NOT NULL,
     unlimited_apps    varchar(50)[] NULL,
-    tariff_fee        integer       NOT NULL
+    tariff_fee        integer       NOT NULL,
+    max_credit integer       NOT NULL
 );
 
-COPY service (name_service, number_of_devices, minutes, sms, internet, tariff_fee, unlimited_apps)
+COPY service (name_service, number_of_devices, minutes, sms, internet, tariff_fee, unlimited_apps, max_credit)
     FROM '/home/vera/Documents/msu/6Sem/web/Web-prak/src/main/resources/sql/service.csv'
     csv HEADER;
 
@@ -61,7 +62,7 @@ DROP TABLE IF EXISTS contract_history CASCADE;
 CREATE TABLE contract_history
 (
     contract_id       SERIAL PRIMARY KEY,
-    mobile_account    varchar(50)  REFERENCES mobile_accounts,
+    mobile_account    bigint  REFERENCES mobile_accounts,
     service_id        integer REFERENCES service,
     telephone_numbers varchar(15)[] NOT NULL,
     date_start        date          NOT NULL,

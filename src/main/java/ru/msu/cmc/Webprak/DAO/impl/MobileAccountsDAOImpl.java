@@ -32,7 +32,7 @@ public class MobileAccountsDAOImpl extends ru.msu.cmc.Webprak.DAO.impl.CommonDAO
     public List<Transactions> getTransactions(Long telephoneNumber) {
         List<Transactions> ret = new ArrayList<>();
         for(Transactions transaction : transactionsDAO.getAll()) {
-            if (Objects.equals(telephoneNumber, transaction.getMobileAccount().getId())) {
+            if (Objects.equals(telephoneNumber, transaction.getMobileAccount().getTelephoneNumber())) {
                 ret.add(transaction);
             }
         }

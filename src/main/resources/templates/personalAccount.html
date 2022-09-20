@@ -25,13 +25,27 @@
     <p th:if="${client.getEmail() != null}" th:text="'Электронный почтовый адрес: ' + ${client.getEmail()}"></p>
     <p> Мобильные аккаунты пользователя:&nbsp <span th:if="${personalAccountsDAO.getMobileAccounts(client.getId()) == null}">нет</span>
       <a th:each="number, iter: ${personalAccountsDAO.getMobileAccounts(client.getId())}" th:href="'/mobileAccount?mobileAccountId=' + ${number.getId()}">
-        <span th:text="${number.getTelephoneNumber()} + ${!iter.last ? ',' : ''}"></span>
+        <span th:text="${number.getId()} + ${!iter.last ? ',' : ''}"></span>
       </a>
     </p>
   </div>
 
   <!--edit delete order button group-->
 
+  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+      <form style="margin-right: 30px" method="get" action="/editPersonalAccount">
+        <input type="hidden" name="clientId" th:value="${client.getId()}"/>
+        <button id="editButton" type="submit" class="btn btn-secondary">Редактировать информацию о клиенте
+        </button>
+      </form>
+      <form style="margin-right: 30px" method="post" action="/removePersonalAccount">
+        <input type="hidden" name="clientId" th:value="${client.getId()}"/>
+        <button id="deleteButton" type="submit" class="btn btn-secondary">Удалить клиента
+        </button>
+      </form>
+    </div>
+  </div>
   <!--end of button group-->
 
 </div>

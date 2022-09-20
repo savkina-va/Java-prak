@@ -23,8 +23,12 @@
     <thead class="thead-dark">
     <tr>
       <th scope="col"> id договора </th>
+      <th scope="col"> Клиент </th>
       <th scope="col"> Телефонный номер </th>
       <th scope="col"> Услуга </th>
+      <th scope="col"> Дата начала </th>
+      <th scope="col"> Дата завершения </th>
+
     </tr>
     </thead>
     <tbody>
@@ -36,10 +40,29 @@
         <span th:text="${contract.getId()}"> </span>
       </td>
       <td>
-          <span th:text="${contract.getMobileAccount()}"> </span>
+        <a th:href="'/personalAccount?clientId=' + ${contract.getMobileAccount.getClientId().getId()}">
+          <span th:text="${contract.getMobileAccount.getClientId().getName()}" > </span>
+          <span th:if="${contract.getMobileAccount.getClientId().getSurname() != null}" th:text="' ' + ${contract.getMobileAccount.getClientId().getSurname()}"> </span>
+        </a>
+      </td>
+
+
+      <td>
+        <a th:href="'/mobileAccount?mobileAccountId=' + ${contract.getMobileAccount.getId()}">
+          <span th:text="${contract.getMobileAccount.getId()}"> </span>
+        </a>
       </td>
       <td>
-        <span th:text="${contract.getServiceId()}"> </span>
+        <a th:href="'/service?serviceId=' + ${contract.getServiceId.getId()}">
+          <span th:text="${contract.getServiceId.getNameService()}"> </span>
+        </a>
+
+      </td>
+      <td>
+        <span th:text="${contract.getDateStart()}"> </span>
+      </td>
+      <td>
+        <span th:text="${contract.getDateStop()}"> </span>
       </td>
     </tr>
 

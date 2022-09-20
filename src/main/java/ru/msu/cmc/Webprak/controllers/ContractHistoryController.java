@@ -29,8 +29,8 @@ public class ContractHistoryController {
     @GetMapping("/contractHistory")
     public String servicesListPage(@NonNull Model model) {
         List<ContractHistory> contracts = (List<ContractHistory>) contractHistoryDAO.getAll();
-        model.addAttribute("contracts", contracts);
 
+        model.addAttribute("contracts", contracts);
         return "contractHistory";
     }
 }

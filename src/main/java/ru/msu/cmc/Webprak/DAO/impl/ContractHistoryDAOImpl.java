@@ -43,11 +43,11 @@ public class ContractHistoryDAOImpl extends ru.msu.cmc.Webprak.DAO.impl.CommonDA
         return ret;
     }
 
-    @Override
-    public Boolean isCreditExceeded(Long contractId) {
-        ContractHistory contract = getById(contractId);
-        Long maxCredit = contract.getServiceId().getMaxCredit();
-        Long balance = contract.getMobileAccount().getBalance();
-        return (balance >= (-maxCredit));
-    }
+//    @Override
+//    public Boolean isCreditExceeded(Long contractId) {
+//        ContractHistory contract = getById(contractId);
+//        Long maxCredit = contract.getServiceId().getMaxCredit();
+//        Long balance = contract.getMobileAccount().getBalance();
+//        return (balance >= (-maxCredit));
+//    }
 }

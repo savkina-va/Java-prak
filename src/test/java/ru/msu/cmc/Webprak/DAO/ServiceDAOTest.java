@@ -35,8 +35,7 @@ public class ServiceDAOTest {
         @SuppressWarnings("unchecked")
         Long result = Long.valueOf((Integer) query.list().get(0));
         session.close();
-        Service entity = new Service(1000L, "lalala", 1L, 3000.0, 10000L,
-                500.0, "minecraft", 422L);
+        Service entity = new Service(18L,"bebebe", 1L, 300.0, 700L, 5.0, "lalala",422L,1000L);
         serviceDAO.save(entity);
         Service service = serviceDAO.getById(1000L);
         assertEquals(service, entity);
@@ -44,7 +43,7 @@ public class ServiceDAOTest {
 
     @Test
     void updateTest() {
-        Service entity = new Service(1L,"bebebe", 1L, 300.0, 700L, 5.0, "lalala",422L);
+        Service entity = new Service(1L,"bebebe", 1L, 300.0, 700L, 5.0, "lalala",422L,1000L);
         serviceDAO.update(entity);
         Service service = serviceDAO.getById(1L);
         assertEquals(service, entity);

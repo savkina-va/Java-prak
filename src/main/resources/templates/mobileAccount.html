@@ -19,15 +19,52 @@
 
 <div class="indent">
   <div id="mobileAccountInfo">
-    <p th:if="${mobileAccount.getTelephoneNumber() != null}" th:text="'Фамилия: ' + ${mobileAccount.getTelephoneNumber()}"></p>
+    <h4 th:if="${mobileAccount.getTelephoneNumber() != null}" th:text="'Мобильный аккаунт номер ' + ${mobileAccount.getTelephoneNumber()}"></h4>
 
+    <a  th:href="'/personalAccount?clientId=' + ${mobileAccount.getClientId().getId()}">
+      <span th:text="${mobileAccount.getClientId().getName()}" > </span>
+      <span th:if="${mobileAccount.getClientId().getSurname() != null}" th:text="' ' + ${mobileAccount.getClientId().getSurname()}"> </span>
+    </a>
+    <p th:if="${mobileAccount.getBalance() != null}"  th:text="'Баланс: ' + ${mobileAccount.getBalance()}"></p>
+    <h4 th:text="'Транзакции на мобильном счету'"></h4>
   </div>
+  <table class="table table-bordered table-warning">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col"> id транцакции </th>
+      <th scope="col"> Тип операции </th>
+      <th scope="col"> Сумма </th>
+      <th scope="col"> Дата </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${mobileAccountDAO.getTransactions(mobileAccount.getId()).isEmpty()}">
+      <td colspan="6"> В базе пока нет ни одного человека. <a href="/errorPage">Добавить?</a></td>
+    </tr>
+    <tr th:each="transaction : ${mobileAccountDAO.getTransactions(mobileAccount.getId())}">
+      <td>
+        <span th:text="${transaction.getId()}"> </span>
+      </td>
+      <td>
+        <span th:text="${transaction.getTypeOfTransaction()}"> </span>
+      </td>
+      <td>
+        <span th:text="${transaction.getAmount()}"> </span>
+      </td>
+      <td>
+        <span th:text="${transaction.getDateOfTransaction()}"> </span>
+      </td>
+    </tr>
 
+    </tbody>
+  </table>
   <!--edit delete order button group-->
 
   <!--end of button group-->
 
 </div>
+
+
 
 <div th:replace="general :: site-footer"></div>
 <div th:replace="general :: site-script"></div>

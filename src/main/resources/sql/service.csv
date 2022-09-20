@@ -1,6 +1,6 @@
-name_service,number_of_devices,minutes,sms,internet,tariff_fee,unlimited_apps
-Для двоих,2,300,300,30,840,"{Youtube, VK}"
-Студенческий,1,300,150,20,400,
-Корпоротивный,10,Infinity,500,Infinity,2000,{Youtube}
-Деловой,1,600,300,Infinity,650,
-Детский,1,200,100,0,300,
+name_service,number_of_devices,minutes,sms,internet,tariff_fee,unlimited_apps,max_credit
+Для двоих,2,300,300,30,840,"{Youtube, VK}",1000
+Студенческий,1,300,150,20,400,,1000
+Корпоротивный,10,Infinity,500,Infinity,2000,{Youtube},1000
+Деловой,1,600,300,Infinity,650,,1000
+Детский,1,200,100,0,300,,1000

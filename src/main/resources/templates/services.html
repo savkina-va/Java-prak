@@ -17,9 +17,6 @@
 <div th:replace="general :: page-header"> </div>
 
 <div class="indent">
-  <form method="get" action="/editService">
-    <button id="addServiceButton" type="submit" class="btn btn-primary">Добавить услугу</button>
-  </form>
   <br>
 
   <table class="table table-bordered table-warning">
@@ -31,6 +28,7 @@
       <th scope="col"> SMS </th>
       <th scope="col"> Интернет, гб </th>
       <th scope="col"> Стоимость, руб </th>
+      <th scope="col"> Максимальный кредит </th>
     </tr>
     </thead>
     <tbody>
@@ -58,6 +56,9 @@
       </td>
       <td>
         <span th:text="${service.getTariffFee()}"> </span>
+      </td>
+      <td>
+        <span th:text="${service.getMaxCredit()}"> </span>
       </td>
     </tr>
 
