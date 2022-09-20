@@ -26,14 +26,13 @@ public class PersonalAccountsDAOImpl extends ru.msu.cmc.webprak.DAO.impl.CommonD
         super(PersonalAccounts.class);
     }
 
-    @Autowired
     private MobileAccountsDAO mobileAccountsDAO = new MobileAccountsDAOImpl();
 
     @Override
     public List<MobileAccounts> getMobileAccounts(Long clientId) {
         List<MobileAccounts> ret = new ArrayList<>();
         for(MobileAccounts mobileAccounts : mobileAccountsDAO.getAll()) {
-            if (Objects.equals(mobileAccounts.getClientId().getId(), clientId)) {
+            if (clientId.equals(mobileAccounts.getClientId().getId())) {
                 ret.add(mobileAccounts);
             }
         }

@@ -6,13 +6,14 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "personal_accounts", schema = "public", catalog = "postgres")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
+@Table(name = "personal_accounts", schema = "public", catalog = "postgres")
 public class PersonalAccounts implements CommonEntity<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
