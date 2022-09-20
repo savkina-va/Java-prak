@@ -13,6 +13,15 @@ import org.hibernate.query.Query;
 import org.junit.jupiter.api.Test;
 
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
 import static org.springframework.util.Assert.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,26 +36,5 @@ public class ServiceDAOTest {
     private ServiceDAO serviceDAO;
     @Autowired
     private SessionFactory sessionFactory;
-    @Test
-    void createTest() {
-        Session session = sessionFactory.openSession();
-        Query query = session.createSQLQuery("select max(id) from service");
-
-        @SuppressWarnings("unchecked")
-        Long result = Long.valueOf((Integer) query.list().get(0));
-        session.close();
-        Service entity = new Service(18L,"bebebe", 1L, 300.0, 700L, 5.0, "lalala",422L,1000L);
-        serviceDAO.save(entity);
-        Service service = serviceDAO.getById(1000L);
-        assertEquals(service, entity);
-    }
-
-    @Test
-    void updateTest() {
-        Service entity = new Service(1L,"bebebe", 1L, 300.0, 700L, 5.0, "lalala",422L,1000L);
-        serviceDAO.update(entity);
-        Service service = serviceDAO.getById(1L);
-        assertEquals(service, entity);
-    }
 
 }
