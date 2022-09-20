@@ -61,6 +61,12 @@ public class PersonalAccountsController {
         return "personalAccount";
     }
 
+    @GetMapping("/errorPage")
+    public String errorPage() {
+
+        return "errorPage";
+    }
+
 //    @GetMapping("/editPersonalAccount")
 //    public String editPersonPage(@RequestParam(name = "personId", required = false) Long personId, Model model) {
 //        if (personId == null) {

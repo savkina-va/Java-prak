@@ -24,7 +24,7 @@
     <p th:if="${client.getMiddleName() != null}" th:text="'Отчество: ' + ${client.getMiddleName()}"></p>
     <p th:if="${client.getEmail() != null}" th:text="'Электронный почтовый адрес: ' + ${client.getEmail()}"></p>
     <p> Мобильные аккаунты пользователя:&nbsp <span th:if="${personalAccountsDAO.getMobileAccounts(client.getId()) == null}">нет</span>
-      <a th:each="number, iter: ${personalAccountsDAO.getMobileAccounts(client.getId())}" th:href="'/errorPage'">
+      <a th:each="number, iter: ${personalAccountsDAO.getMobileAccounts(client.getId())}" th:href="'/mobileAccount?mobileAccountId=' + ${number.getId()}">
         <span th:text="${number.getTelephoneNumber()} + ${!iter.last ? ',' : ''}"></span>
       </a>
     </p>

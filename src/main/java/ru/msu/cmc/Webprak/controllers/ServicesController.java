@@ -35,7 +35,7 @@ public class ServicesController {
     }
 
     @GetMapping("/service")
-    public String clientPage(@RequestParam(name = "serviceId") Long serviceId, Model model) {
+    public String servicePage(@RequestParam(name = "serviceId") Long serviceId, Model model) {
         Service service = serviceDAO.getById(serviceId);
 
         if (service == null) {
