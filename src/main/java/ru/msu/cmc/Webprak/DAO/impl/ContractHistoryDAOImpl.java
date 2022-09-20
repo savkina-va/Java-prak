@@ -32,16 +32,16 @@ public class ContractHistoryDAOImpl extends ru.msu.cmc.Webprak.DAO.impl.CommonDA
         }
         return ret;
     }
-    @Override
-    public List<ContractHistory> filterByDate(Date startDate, Date stopDate) {
-        List<ContractHistory> ret = new ArrayList<>();
-        for (ContractHistory contract : getAll()) {
-            if (startDate.before(contract.getDateStart()) && stopDate.after(contract.getDateStop())) {
-                ret.add(contract);
-            }
-        }
-        return ret;
-    }
+//    @Override
+//    public List<ContractHistory> filterByDate(Date startDate, Date stopDate) {
+//        List<ContractHistory> ret = new ArrayList<>();
+//        for (ContractHistory contract : getAll()) {
+//            if (startDate.before(contract.getDateStart()) && stopDate.after(contract.getDateStop())) {
+//                ret.add(contract);
+//            }
+//        }
+//        return ret;
+//    }
 
 //    @Override
 //    public Boolean isCreditExceeded(Long contractId) {

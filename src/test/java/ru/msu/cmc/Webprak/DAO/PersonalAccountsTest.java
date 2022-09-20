@@ -35,13 +35,8 @@ public class PersonalAccountsTest {
     private MobileAccountsDAO mobileAccountsDAO = new MobileAccountsDAOImpl();
     @Test
     void getMobileAccountsTest() {
-//        PersonalAccounts personalAccount = new PersonalAccounts(42L, "x", "x", "x", "x", "x");
-//        personalAccountsDAO.save(personalAccount);
-//        MobileAccounts mobileAccount = new MobileAccounts(42L, personalAccount, 42L);
-//        mobileAccountsDAO.save(mobileAccount);
-
-        MobileAccounts mobileAccount = mobileAccountsDAO.getById(42L);
-        List<MobileAccounts> getAccounts = personalAccountsDAO.getMobileAccounts(42L);
+        MobileAccounts mobileAccount = mobileAccountsDAO.getById(89999999999L);
+        List<MobileAccounts> getAccounts = personalAccountsDAO.getMobileAccounts(1L);
         assertEquals(getAccounts.get(0), mobileAccount);
     }
 }

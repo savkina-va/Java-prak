@@ -19,8 +19,8 @@
 <div class="indent">
   <br>
 
-  <table class="table table-bordered table-warning">
-    <thead class="thead-dark">
+  <table class="table table-bordered">
+    <thead class="table-success">
     <tr>
       <th scope="col"> Название </th>
       <th scope="col"> Количество подключаемых устройств </th>
@@ -31,9 +31,9 @@
       <th scope="col"> Максимальный кредит </th>
     </tr>
     </thead>
-    <tbody>
+    <tbody class="table-default">
     <tr th:if="${services.isEmpty()}">
-      <td colspan="6"> В базе пока нет ни одной услуги. <a href="/editService">Добавить?</a></td>
+      <td colspan="6"> В базе пока нет ни одной услуги.</td>
     </tr>
     <tr th:each="service : ${services}">
 

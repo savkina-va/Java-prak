@@ -43,7 +43,7 @@ public class MobileAccountsTest {
     private ContractHistoryDAO contractHistoryDAO = new ContractHistoryDAOImpl();
 
     @Test
-    void TestGetTransactions() throws ParseException {
+    void testGetTransactions() throws ParseException {
 //        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
 //        Date date = formatter.parse("7-Jun-2010");
 //
@@ -54,8 +54,8 @@ public class MobileAccountsTest {
 //        Transactions transaction = new Transactions(42L, "x", mobileAccount, 42L, date);
 //        transactionsDAO.save(transaction);
 
-        Transactions transaction = transactionsDAO.getById(42L);
-        List<Transactions> getTransaction = mobileAccountsDAO.getTransactions(42L);
+        Transactions transaction = transactionsDAO.getById(13L);
+        List<Transactions> getTransaction = mobileAccountsDAO.getTransactions(89999999999L);
         assertEquals(getTransaction.get(0), transaction);
     }
 

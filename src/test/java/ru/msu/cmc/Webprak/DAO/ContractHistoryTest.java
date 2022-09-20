@@ -18,14 +18,10 @@ public class ContractHistoryTest {
 
     @Test
     void testFilterByServiceId(){
-        List<ContractHistory> getTransaction = contractHistoryDAO.filterByServiceId(42L);
-        assertEquals(getTransaction.get(0), contractHistoryDAO.getById(42L));
+        List<ContractHistory> getHistory = contractHistoryDAO.filterByServiceId(4L);
+        assertEquals(getHistory.get(0), contractHistoryDAO.getById(1L));
     }
 
-    @Test
-    void testFilterByDate(){
-
-    }
 
     @Test
     void testisCreditExceeded(){

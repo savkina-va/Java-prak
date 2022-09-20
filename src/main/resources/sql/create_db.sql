@@ -49,7 +49,7 @@ CREATE TABLE service
     minutes           real          NOT NULL,
     sms               integer       NOT NULL,
     internet          real          NOT NULL,
-    unlimited_apps    varchar(50)[] NULL,
+    unlimited_apps    varchar(50) NULL,
     tariff_fee        integer       NOT NULL,
     max_credit integer       NOT NULL
 );

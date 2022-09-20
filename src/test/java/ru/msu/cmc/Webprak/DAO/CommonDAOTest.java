@@ -22,8 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -68,62 +67,60 @@ public class CommonDAOTest {
 
     @Test
     void testGetById(){
-        MobileAccounts trueMobileAccount =  new MobileAccounts(1L, personalAccountsDAO.getById(89999999999L),0L);
+        MobileAccounts trueMobileAccount =  new MobileAccounts(89999999999L, personalAccountsDAO.getById(1L),0L);
         assertEquals(trueMobileAccount, mobileAccountsDAO.getById(89999999999L));
     }
 
     @Test
     void testGetAll() {
-        List<MobileAccounts> actualMobileAccounts = new ArrayList<>();
-        actualMobileAccounts.add(new MobileAccounts(1L, personalAccountsDAO.getById(89999999999L),0L));
-        actualMobileAccounts.add(new MobileAccounts(2L, personalAccountsDAO.getById(89162222222L),0L));
-        actualMobileAccounts.add(new MobileAccounts(3L, personalAccountsDAO.getById(89061231231L),0L));
-        actualMobileAccounts.add(new MobileAccounts(4L, personalAccountsDAO.getById(89031020512L),0L));
-        actualMobileAccounts.add(new MobileAccounts(5L, personalAccountsDAO.getById(84991234568L),0L));
-        actualMobileAccounts.add(new MobileAccounts(6L, personalAccountsDAO.getById(84991234567L),0L));
-        actualMobileAccounts.add(new MobileAccounts(4L, personalAccountsDAO.getById(84991230067L),0L));
-        actualMobileAccounts.add(new MobileAccounts(3L, personalAccountsDAO.getById(84991234569L),0L));
-        actualMobileAccounts.add(new MobileAccounts(3L, personalAccountsDAO.getById(89064242427L),0L));
-        actualMobileAccounts.add(new MobileAccounts(3L, personalAccountsDAO.getById(79061231232L),0L));
+        List<PersonalAccounts> actualPersonalAccounts = new ArrayList<>();
 
-        List<MobileAccounts> mobileAccounts = (List<MobileAccounts>) mobileAccountsDAO.getAll();
-        assertEquals(actualMobileAccounts, mobileAccounts);
+        actualPersonalAccounts.add(new PersonalAccounts(1L, "x", "x", "x", "x", "x"));
+        actualPersonalAccounts.add(new PersonalAccounts(2L, "x", "x", "x", "x", "x"));
+        personalAccountsDAO.saveCollection(actualPersonalAccounts);
+
+        List<PersonalAccounts> personalAccounts = (List<PersonalAccounts>) personalAccountsDAO.getAll();
+        assertEquals(actualPersonalAccounts, personalAccounts);
     }
 
     @Test
     void testSave() {
-        Service newService = new Service(1000L,"bebebe", 1L, 300.0, 700L, 5.0, "lalala", 422L, 12L);
+        Service newService = new Service(1L,"bebebe", 1L, 300.0, 700L, 5.0, "lalala", 422L, 12L);
         serviceDAO.save(newService);
-        assertEquals(serviceDAO.getById(1000L), newService);
+        assertEquals(serviceDAO.getById(1L), newService);
     }
 
     @Test
     void testSaveCollection() {
-        List<Service> services = new ArrayList<>();
-        services.add(new Service("test service 1" ,2L,300.0,300L,30.0,840L, 500L));
-        services.add(new Service("test service 2" ,2L,300.0,300L,30.0,840L, 500L));
-        serviceDAO.saveCollection(services);
-        assertEquals(services.get(0), serviceDAO.getById(getLastId() + 1));
-        assertEquals(services.get(1), serviceDAO.getById(getLastId() + 2));
+        List<PersonalAccounts> accounts = new ArrayList<>();
+        accounts.add(new PersonalAccounts(1L, "x", "x", "x", "x", "x"));
+        accounts.add(new PersonalAccounts(2L, "x", "x", "x", "x", "x"));
+        personalAccountsDAO.saveCollection(accounts);
+        assertEquals(accounts.get(0), personalAccountsDAO.getById(1L));
+        assertEquals(accounts.get(1), personalAccountsDAO.getById(2L));
     }
 
     @Test
     void testUpdate() {
-        Service updatedService = new Service(1L,"bebebe", 1L, 300.0, 700L, 5.0, "lalala", 422L, 12L);
-        serviceDAO.update(updatedService);
-        assertEquals(serviceDAO.getById(1L), updatedService);
+        PersonalAccounts newAccount = new PersonalAccounts(1L, "x", "x", "x", "x", "x");
+        personalAccountsDAO.save(newAccount);
+        personalAccountsDAO.update(newAccount);
+        assertEquals(personalAccountsDAO.getById(1L), newAccount);
     }
 
     @Test
     void testDelete() {
-        serviceDAO.delete(new Service("Студенческий", 1L, 300.0, 150L, 20.0, 400L, 300L));
-        assertNull(serviceDAO.getById(1L));
+        PersonalAccounts newAccount = new PersonalAccounts(1L, "x", "x", "x", "x", "x");
+        personalAccountsDAO.save(newAccount);
+        personalAccountsDAO.delete(newAccount);
+        assertNull(personalAccountsDAO.getById(1L));
     }
 
     @Test
     void testDeleteById() {
-        Long id = 4L;
-        serviceDAO.deleteById(id);
-        assertNull(serviceDAO.getById(id));
+        PersonalAccounts newAccount = new PersonalAccounts(2L, "x", "x", "x", "x", "x");
+        personalAccountsDAO.save(newAccount);
+        personalAccountsDAO.deleteById(2L);
+        assertNull(personalAccountsDAO.getById(2L));
     }
 }

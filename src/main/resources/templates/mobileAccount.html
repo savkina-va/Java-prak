@@ -28,10 +28,10 @@
     <p th:if="${mobileAccount.getBalance() != null}"  th:text="'Баланс: ' + ${mobileAccount.getBalance()}"></p>
     <h4 th:text="'Транзакции на мобильном счету'"></h4>
   </div>
-  <table class="table table-bordered table-warning">
-    <thead class="thead-dark">
+  <table class="table table-bordered">
+    <thead class="table-success">
     <tr>
-      <th scope="col"> id транцакции </th>
+      <th scope="col"> Id транзакции </th>
       <th scope="col"> Тип операции </th>
       <th scope="col"> Сумма </th>
       <th scope="col"> Дата </th>
@@ -39,7 +39,7 @@
     </thead>
     <tbody>
     <tr th:if="${mobileAccountDAO.getTransactions(mobileAccount.getId()).isEmpty()}">
-      <td colspan="6"> В базе пока нет ни одного человека. <a href="/errorPage">Добавить?</a></td>
+      <td colspan="6"> В базе пока нет ни одного человека.</td>
     </tr>
     <tr th:each="transaction : ${mobileAccountDAO.getTransactions(mobileAccount.getId())}">
       <td>
