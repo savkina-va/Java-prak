@@ -3,7 +3,7 @@ package ru.msu.cmc.Webprak.DAO.impl;
 import org.springframework.stereotype.Repository;
 import ru.msu.cmc.Webprak.DAO.ContractHistoryDAO;
 import ru.msu.cmc.Webprak.models.ContractHistory;
-import ru.msu.cmc.Webprak.models.PersonalAccounts;
+import ru.msu.cmc.Webprak.models.Transactions;
 
 import java.sql.Date;
 

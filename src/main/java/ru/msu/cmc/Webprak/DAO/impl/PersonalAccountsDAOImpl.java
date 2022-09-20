@@ -2,10 +2,11 @@ package ru.msu.cmc.Webprak.DAO.impl;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import ru.msu.cmc.Webprak.DAO.PersonalAccountsDAO;
-import ru.msu.cmc.Webprak.DAO.ServiceDAO;
+import ru.msu.cmc.Webprak.DAO.MobileAccountsDAO;
 
 import ru.msu.cmc.Webprak.models.MobileAccounts;
 import ru.msu.cmc.Webprak.models.PersonalAccounts;
@@ -17,6 +18,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class PersonalAccountsDAOImpl extends ru.msu.cmc.webprak.DAO.impl.CommonDAOImpl<PersonalAccounts, Long> implements PersonalAccountsDAO {
@@ -24,14 +26,18 @@ public class PersonalAccountsDAOImpl extends ru.msu.cmc.webprak.DAO.impl.CommonD
         super(PersonalAccounts.class);
     }
 
+    @Autowired
+    private MobileAccountsDAO mobileAccountsDAO = new MobileAccountsDAOImpl();
 
     @Override
     public List<MobileAccounts> getMobileAccounts(Long clientId) {
-        try (Session session = sessionFactory.openSession()) {
-            Query<MobileAccounts> query = session.createQuery("select * from mobile_accounts where mobile_accounts.client_id==:clientID", MobileAccounts.class)
-                    .setParameter("clientID", clientId);
-            return query.getResultList();
+        List<MobileAccounts> ret = new ArrayList<>();
+        for(MobileAccounts mobileAccounts : mobileAccountsDAO.getAll()) {
+            if (Objects.equals(mobileAccounts.getClientId().getId(), clientId)) {
+                ret.add(mobileAccounts);
+            }
         }
+        return ret;
     }
 }
 

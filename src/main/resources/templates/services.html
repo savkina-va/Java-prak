@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Услуги</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <style>
+    .indent {
+      margin-left: 30px;
+      margin-right: 30px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<div th:replace="general :: page-header"> </div>
+
+<div class="indent">
+  <form method="get" action="/editService">
+    <button id="addServiceButton" type="submit" class="btn btn-primary">Добавить услугу</button>
+  </form>
+  <br>
+
+  <table class="table table-bordered table-warning">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col"> Название </th>
+      <th scope="col"> Количество подключаемых устройств </th>
+      <th scope="col"> Минуты </th>
+      <th scope="col"> SMS </th>
+      <th scope="col"> Интернет, гб </th>
+      <th scope="col"> Стоимость, руб </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${services.isEmpty()}">
+      <td colspan="6"> В базе пока нет ни одной услуги. <a href="/editService">Добавить?</a></td>
+    </tr>
+    <tr th:each="service : ${services}">
+
+      <td>
+        <a th:href="'/service?serviceId=' + ${service.getId()}">
+          <span th:text="${service.getNameService()}"> </span>
+        </a>
+      </td>
+      <td>
+        <span th:text="${service.getNumberOfDevices()}"> </span>
+      </td>
+      <td>
+        <span th:text="${service.getMinutes()}"> </span>
+      </td>
+      <td>
+        <span th:text="${service.getSms()}"> </span>
+      </td>
+      <td>
+        <span th:text="${service.getInternet()}"> </span>
+      </td>
+      <td>
+        <span th:text="${service.getTariffFee()}"> </span>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<div th:replace="general :: site-script"></div>
+
+</body>
+</html>
