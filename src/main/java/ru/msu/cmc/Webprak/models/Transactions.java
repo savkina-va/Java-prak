@@ -12,7 +12,6 @@ import java.util.Objects;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 @Table(name = "transactions", schema = "public", catalog = "postgres")
 public class Transactions implements CommonEntity<Long> {
     @Id

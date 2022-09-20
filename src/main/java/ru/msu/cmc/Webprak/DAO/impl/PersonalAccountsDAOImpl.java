@@ -21,18 +21,19 @@ import java.util.List;
 import java.util.Objects;
 
 @Repository
-public class PersonalAccountsDAOImpl extends ru.msu.cmc.webprak.DAO.impl.CommonDAOImpl<PersonalAccounts, Long> implements PersonalAccountsDAO {
+public class PersonalAccountsDAOImpl extends ru.msu.cmc.Webprak.DAO.impl.CommonDAOImpl<PersonalAccounts, Long> implements PersonalAccountsDAO {
+
     public PersonalAccountsDAOImpl(){
         super(PersonalAccounts.class);
     }
-
+    @Autowired
     private MobileAccountsDAO mobileAccountsDAO = new MobileAccountsDAOImpl();
 
     @Override
     public List<MobileAccounts> getMobileAccounts(Long clientId) {
         List<MobileAccounts> ret = new ArrayList<>();
         for(MobileAccounts mobileAccounts : mobileAccountsDAO.getAll()) {
-            if (clientId.equals(mobileAccounts.getClientId().getId())) {
+            if (Objects.equals(clientId, mobileAccounts.getClientId().getId())) {
                 ret.add(mobileAccounts);
             }
         }

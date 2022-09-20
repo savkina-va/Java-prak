@@ -1,4 +1,4 @@
-package ru.msu.cmc.webprak.DAO.impl;
+package ru.msu.cmc.Webprak.DAO.impl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
