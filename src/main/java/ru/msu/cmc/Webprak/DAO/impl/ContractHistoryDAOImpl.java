@@ -23,7 +23,7 @@ public class ContractHistoryDAOImpl extends ru.msu.cmc.Webprak.DAO.impl.CommonDA
 
 
     @Override
-    public List<ContractHistory> getServices(Long serviceId){
+    public List<ContractHistory> filterByServiceId(Long serviceId){
         List<ContractHistory> ret = new ArrayList<>();
         for(ContractHistory contract : getAll()) {
             if (Objects.equals(serviceId, contract.getServiceId().getId())) {
