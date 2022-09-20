@@ -30,7 +30,10 @@
                 <a class="nav-link" id="peopleListLink" th:href="@{personalAccounts}">Клиенты</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="serviceListLink" th:href="@{personalAccounts}">Услуги</a>
+                <a class="nav-link" id="serviceListLink" th:href="@{services}">Тарифы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="historyListLink" th:href="@{contractHistory}">История договоров</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="gitHub" href="https://github.com/mayer-va/Java-prak/tree/master">GitHub</a>
@@ -43,7 +46,7 @@
 
 <div th:fragment="site-footer" class="fixed-bottom indent">
     <p>
-        Биллинговая cистема оператора связи
+        Биллинговая система оператора связи
         <br>
         Майер Вера, 328 группа, 2022
         <br>

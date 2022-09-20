@@ -5,6 +5,10 @@ import ru.msu.cmc.Webprak.models.PersonalAccounts;
 import ru.msu.cmc.Webprak.DAO.PersonalAccountsDAO;
 import ru.msu.cmc.Webprak.DAO.impl.PersonalAccountsDAOImpl;
 
+import ru.msu.cmc.Webprak.models.MobileAccounts;
+import ru.msu.cmc.Webprak.DAO.MobileAccountsDAO;
+import ru.msu.cmc.Webprak.DAO.impl.MobileAccountsDAOImpl;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +29,9 @@ public class PersonalAccountsController {
     @Autowired
     private final PersonalAccountsDAO personalAccountsDAO = new PersonalAccountsDAOImpl();
 
+    @Autowired
+    private final MobileAccountsDAO mobileAccountsDAO = new MobileAccountsDAOImpl();
+
 //    @RequestMapping(value = "/personalAccounts", method = RequestMethod.POST)
 //    public String getClients(Model model) {
 //        PersonalAccounts accounts = new PersonalAccounts();
@@ -40,17 +47,18 @@ public class PersonalAccountsController {
         return "personalAccounts";
     }
 
-    @GetMapping("/client")
+    @GetMapping("/personalAccount")
     public String clientPage(@RequestParam(name = "clientId") Long clientId, Model model) {
         PersonalAccounts client = personalAccountsDAO.getById(clientId);
 
-//        if (personalAccount == null) {
-//            model.addAttribute("error_msg", "В базе нет человека с ID = " + personId);
-//            return "errorPage";
-//        }
+        if (client == null) {
+            model.addAttribute("error_msg", "В базе нет человека с ID = " + clientId);
+            return "errorPage";
+        }
 
         model.addAttribute("client", client);
-        return "client";
+        model.addAttribute("personalAccountsDAO", personalAccountsDAO);
+        return "personalAccount";
     }
 
 //    @GetMapping("/editPersonalAccount")

@@ -17,7 +17,7 @@ DROP TABLE IF EXISTS mobile_accounts CASCADE;
 CREATE TABLE mobile_accounts
 (
     client_id        integer REFERENCES personal_accounts,
-    telephone_number bigint PRIMARY KEY,
+    telephone_number varchar(50) PRIMARY KEY,
     balance          integer NOT NULL
 );
 
@@ -30,8 +30,8 @@ DROP TABLE IF EXISTS transactions CASCADE;
 CREATE TABLE transactions
 (
     transaction_id      SERIAL PRIMARY KEY,
-    type_of_transaction integer NOT NULL,
-    mobile_account      bigint REFERENCES mobile_accounts,
+    type_of_transaction varchar(8) NOT NULL,
+    mobile_account      varchar(50)  REFERENCES mobile_accounts,
     amount              integer     NOT NULL,
     date_of_transaction date        NOT NULL
 );
@@ -49,7 +49,7 @@ CREATE TABLE service
     minutes           real          NOT NULL,
     sms               integer       NOT NULL,
     internet          real          NOT NULL,
-    unlimited_apps    varchar(50) NULL,
+    unlimited_apps    varchar(50)[] NULL,
     tariff_fee        integer       NOT NULL
 );
 
@@ -61,7 +61,7 @@ DROP TABLE IF EXISTS contract_history CASCADE;
 CREATE TABLE contract_history
 (
     contract_id       SERIAL PRIMARY KEY,
-    mobile_account    bigint  REFERENCES mobile_accounts,
+    mobile_account    varchar(50)  REFERENCES mobile_accounts,
     service_id        integer REFERENCES service,
     telephone_numbers varchar(15)[] NOT NULL,
     date_start        date          NOT NULL,

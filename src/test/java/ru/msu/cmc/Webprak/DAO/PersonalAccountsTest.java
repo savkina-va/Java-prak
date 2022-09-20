@@ -6,6 +6,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
+import ru.msu.cmc.Webprak.models.MobileAccounts;
 import ru.msu.cmc.Webprak.models.PersonalAccounts;
 
 import org.hibernate.Session;
@@ -64,9 +65,16 @@ public class PersonalAccountsTest {
     @Test
     void deleteByIdTest() {
         Session session = sessionFactory.openSession();
-        personalAccountsDAO.deleteById(18L);
-        assertNull(personalAccountsDAO.getById(18L));
+        personalAccountsDAO.deleteById(7L);
+        assertNull(personalAccountsDAO.getById(7L));
     }
 
+    @Test
+    void getMobileAccountsTest() {
+        Session session = sessionFactory.openSession();
+        List<MobileAccounts> acc = personalAccountsDAO.getMobileAccounts(1L);
+        //assertNull(personalAccountsDAO.getById(18L));
+        System.out.println(acc);
+    }
 
 }

@@ -26,7 +26,7 @@ public class HibernateDatabaseConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(oraDataSource());
-        sessionFactory.setPackagesToScan("ru.msu.cmc.Webprak.models"); // TODO: чё это
+        sessionFactory.setPackagesToScan("ru.msu.cmc.Webprak.models");
 
         Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
@@ -41,8 +41,6 @@ public class HibernateDatabaseConfig {
     @Bean
     public DataSource oraDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-
-//        TODO: проверить что параметры правильные
 
         dataSource.setDriverClassName(DB_DRIVER);
         dataSource.setUrl(DB_URL);

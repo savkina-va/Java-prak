@@ -11,7 +11,7 @@
       margin-top: 20px;
     }
   </style>
-  <title>Персональный аккаунт клиента клиента</title>
+  <title>Персональный аккаунт клиента</title>
 </head>
 
 <body>
@@ -19,9 +19,15 @@
 
 <div class="indent">
   <div id="personAccountsInfo">
-    <h4 th:text="${client.getName()}"></h4>
+    <p th:if="${client.getSurname() != null}" th:text="'Фамилия: ' + ${client.getSurname()}"></p>
     <p th:if="${client.getName() != null}" th:text="'Имя: ' + ${client.getName()}"></p>
-
+    <p th:if="${client.getMiddleName() != null}" th:text="'Отчество: ' + ${client.getMiddleName()}"></p>
+    <p th:if="${client.getEmail() != null}" th:text="'Электронный почтовый адрес: ' + ${client.getEmail()}"></p>
+    <p> Мобильные аккаунты пользователя:&nbsp <span th:if="${personalAccountsDAO.getMobileAccounts(client.getId()) == null}">нет</span>
+      <a th:each="number, iter: ${personalAccountsDAO.getMobileAccounts(client.getId())}" th:href="'/errorPage'">
+        <span th:text="${number.getTelephoneNumber()} + ${!iter.last ? ',' : ''}"></span>
+      </a>
+    </p>
   </div>
 
   <!--edit delete order button group-->
