@@ -4,11 +4,11 @@
 
 ## Схема Базы данных
 
-![](pictures/scheme_pages.jpeg)
+![](pictures/scheme_bd.jpeg)
 
 ## Описание страниц
 
-![](pictures/scheme_bd.jpeg)
+![](pictures/scheme_pages.jpeg)
 
 ### Меню: 
 + На главную
