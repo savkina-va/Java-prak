@@ -1,12 +1,14 @@
 # Биллинговая база оператора связи
 
+# 1 этап
+
 ## Схема Базы данных
 
-![](scheme_bd.jpeg)
+![](pictures/scheme_pages.jpeg)
 
 ## Описание страниц
 
-![](scheme_pages.jpeg)
+![](pictures/scheme_bd.jpeg)
 
 ### Меню: 
 + На главную
@@ -123,3 +125,70 @@
 #### Редактирование услуги
 
 Выбор в меню "Тарифы" -> Выбор услуги из таблицы, переход на страницу Информация об услуге -> Редактировать услугу -> Изменение полей -> Нажатие кнопки Сохранить
+
+# 2 этап
+
+#### Написание классов, DAO методов,
+
+### Тестирование методов. Покрытие:
+
+![](pictures/testDao.jpg)
+
+# 3 этап
+
+### Web интерфейс
+
+#### Написание страниц, контроллеров
+
+### Главная
+
+![](pictures/start.jpg)
+
+### Услуги
+
+![](pictures/services.jpg)
+
+### Просмотр услуги
+
+![](pictures/service.jpg)
+
+
+### Клиенты
+
+![](pictures/perconalAccounts.jpg)
+
+### Просмотр информации о клиенте
+
+![](pictures/client.jpg)
+
+### История
+
+![](pictures/contractHistory.jpg)
+
+### Просмотр  информации о мобильном счёте
+
+![](pictures/mobileAccount.jpg)
+
+### Создание информации о клиенте
+
+![](pictures/newCleanClient.jpg)
+![](pictures/newClient.jpg)
+![](pictures/newPersonalAccounts.jpg)
+
+### Редактирование информации о клиенте
+
+![](pictures/updateClient1.jpg)
+![](pictures/updateClient2.jpg)
+![](pictures/clientPageupdate.jpg)
+
+### Удаление клиента
+
+![](pictures/deleteClient1.jpg)
+![](pictures/deleteClien2.jpg)
+![](pictures/deleteClient3.jpg)
+
+### Фильтр договоров по услуге
+
+![](pictures/contractHistoryFilter.jpg)
+![](pictures/ContractHistoryFilter2.jpg)
+![](pictures/ContractHistoryFilter3.jpg)
