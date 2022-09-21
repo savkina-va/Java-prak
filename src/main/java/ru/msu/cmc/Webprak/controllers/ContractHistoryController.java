@@ -27,10 +27,19 @@ public class ContractHistoryController {
     private final ContractHistoryDAO contractHistoryDAO = new ContractHistoryDAOImpl();
 
     @GetMapping("/contractHistory")
-    public String servicesListPage(@NonNull Model model) {
-        List<ContractHistory> contracts = (List<ContractHistory>) contractHistoryDAO.getAll();
+    public String servicesListPage(@RequestParam(value = "service", required = false) Long serviceId,
+                                   @NonNull Model model) {
+        Long Id = 1L;
+        if (serviceId!=null) {
+            List<ContractHistory> contracts = contractHistoryDAO.filterByServiceId(serviceId);
+            model.addAttribute("contracts", contracts);
+        }
+        else{
+            List<ContractHistory> contracts = (List<ContractHistory>) contractHistoryDAO.getAll();
+            model.addAttribute("contracts", contracts);
+        }
 
-        model.addAttribute("contracts", contracts);
+
         return "contractHistory";
     }
 }

@@ -18,7 +18,17 @@
 
 <div class="indent">
   <br>
+  <div>
+    <form action="#" th:action="@{/contractHistory}" method="get">
+      <div>
+          <label>
+            <input style="max-width: 30vw;" class="inputText1" type="text" name="service" placeholder="Сервис">
+          </label>
 
+      </div>
+      <input class="button1" type="submit" value="Применить"/>
+    </form>
+  </div>
   <table class="table table-bordered">
     <thead class="table-success">
     <tr>
@@ -33,7 +43,7 @@
     </thead>
     <tbody>
     <tr th:if="${contracts.isEmpty()}">
-      <td colspan="6"> В базе пока нет ни одного контракта. </td>
+      <td colspan="6"> Контрактов по заданному фильтру не найдено </td>
     </tr>
     <tr th:each="contract : ${contracts}">
       <td>
