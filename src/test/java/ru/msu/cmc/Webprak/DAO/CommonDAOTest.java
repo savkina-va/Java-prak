@@ -85,7 +85,7 @@ public class CommonDAOTest {
 
     @Test
     void testSave() {
-        Service newService = new Service(1L,"bebebe", 1L, 300.0, 700L, 5.0, "lalala", 422L, 12L);
+        Service newService = new Service(1L,"bebebe", 1L, 300.0, 700L, 5.0,  422L, 12L);
         serviceDAO.save(newService);
         assertEquals(serviceDAO.getById(1L), newService);
     }
