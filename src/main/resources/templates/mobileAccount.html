@@ -39,7 +39,7 @@
     </thead>
     <tbody>
     <tr th:if="${mobileAccountDAO.getTransactions(mobileAccount.getId()).isEmpty()}">
-      <td colspan="6"> В базе пока нет ни одного человека.</td>
+      <td colspan="6"> В базе пока нет ни одной транзакции по даннному мобильному счёту.</td>
     </tr>
     <tr th:each="transaction : ${mobileAccountDAO.getTransactions(mobileAccount.getId())}">
       <td>

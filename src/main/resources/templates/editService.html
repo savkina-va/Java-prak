@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Редактировать клиента</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <style>
+    .indent {
+      margin-left: 30px;
+      margin-right: 30px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<div th:replace="general :: page-header"> </div>
+
+<div class="indent">
+  <form method="post" action="/saveService">
+
+    <input type="hidden" name="serviceId" th:value="${service.getId()}"/>
+
+    <label for="serviceNameService">Название:</label>
+    <input type="text" id="serviceNameService" name="serviceNameService" required th:value="${service.getNameService()}"><br><br>
+
+    <label for="serviceNumberOfDevices">Количество подключаемых устройств:</label>
+    <input type="text" id="serviceNumberOfDevices" name="serviceNumberOfDevices" required th:value="${service.getNumberOfDevices()}"><br><br>
+
+    <label for="serviceMinutes">Минуты:</label>
+    <input type="text" id="serviceMinutes" name="serviceMinutes" required th:value="${service.getMinutes()}"><br><br>
+
+    <label for="serviceSms">SMS:</label>
+    <input type="text" id="serviceSms" name="serviceSms" required th:value="${service.getSms()}"><br><br>
+
+    <label for="serviceInternet">Интернет:</label>
+    <input type="text" id="serviceInternet" name="serviceInternet" required th:value="${service.getInternet()}"><br><br>
+
+    <label for="serviceTariffFee">Стоимость:</label>
+    <input type="text" id="serviceTariffFee" name="serviceTariffFee" required th:value="${service.getTariffFee()}"><br><br>
+
+    <label for="serviceMaxCredit">Макисмальный кредит:</label>
+    <input type="text" id="serviceMaxCredit" name="serviceMaxCredit" required th:value="${service.getMaxCredit()}"><br><br>
+
+    <input id="submitButton" type="submit" value="Сохранить" class="btn btn-primary">
+  </form>
+</div>
+
+<div th:replace="general :: site-footer"></div>
+<div th:replace="general :: site-script"></div>
+
+</body>
+</html>

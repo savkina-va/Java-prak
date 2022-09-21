@@ -37,9 +37,6 @@ public class Service implements CommonEntity<Long>{
     @Column(name = "internet")
     private Double internet;
 
-    @Column(name = "unlimited_apps")
-    private String unlimitedApps;
-
     @NonNull
     @Column(name = "tariff_fee")
     private Long tariffFee;

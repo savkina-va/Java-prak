@@ -32,6 +32,20 @@
 
   <!--edit delete order button group-->
 
+  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+      <form style="margin-right: 30px" method="get" action="/editService">
+        <input type="hidden" name="serviceId" th:value="${service.getId()}"/>
+        <button id="editButton" type="submit" class="btn btn-secondary">Редактировать информацию об услуге
+        </button>
+      </form>
+      <form style="margin-right: 30px" method="post" action="/removeService">
+        <input type="hidden" name="serviceId" th:value="${service.getId()}"/>
+        <button id="deleteButton" type="submit" class="btn btn-secondary">Удалить услугу
+        </button>
+      </form>
+    </div>
+  </div>
   <!--end of button group-->
 
 </div>

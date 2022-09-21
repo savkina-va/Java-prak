@@ -49,12 +49,11 @@ CREATE TABLE service
     minutes           real          NOT NULL,
     sms               integer       NOT NULL,
     internet          real          NOT NULL,
-    unlimited_apps    varchar(50) NULL,
     tariff_fee        integer       NOT NULL,
     max_credit integer       NOT NULL
 );
 
-COPY service (name_service, number_of_devices, minutes, sms, internet, tariff_fee, unlimited_apps, max_credit)
+COPY service (name_service, number_of_devices, minutes, sms, internet, tariff_fee, max_credit)
     FROM '/home/vera/Documents/msu/6Sem/web/Web-prak/src/main/resources/sql/service.csv'
     csv HEADER;
 
